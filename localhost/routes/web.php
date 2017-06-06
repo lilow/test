@@ -1,16 +1,40 @@
 <?php
 
+Route::get("page/{slag}", "IndexController@view");
+
+
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
+Route::get('/room/{id}', function ($id) {
+
+$rooms = [
+    "1" => [
+        "title" => "Пещера",
+        "description" =>"Холодно",
+        "actions" => [
+            "Пойти домой" => "2",
+            "Заплакать" => "3",
+            "Лечь спать" => "3"
+        ]
+    ],
+    "2" => [
+
+    ],
+    "3" => [
+
+    ],
+
+];
+$room = $rooms[$id];
+
+    return view("quest", ["room" => $room]);
+})->name("room");
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route("room", ["id" => 1]);
 });
+
+
+*/
+
+
